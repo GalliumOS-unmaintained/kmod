@@ -2088,13 +2088,6 @@ static int output_builtin_bin(struct depmod *depmod, FILE *out)
 	FILE *in;
 	struct index_node *idx;
 	char infile[PATH_MAX], line[PATH_MAX], modname[PATH_MAX];
-	unsigned int d1, d2;
-
-	/* This file only exists for kernels >= 2.6.33 */
-	if (sscanf(depmod->cfg->kversion, "%u.%u", &d1, &d2) == 2) {
-		if (d1 * 256 + d2 < 2 * 256 + 6)
-			return 0;
-	}
 
 	if (out == stdout)
 		return 0;
